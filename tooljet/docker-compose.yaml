@@ -7,7 +7,7 @@ services:
     restart: always
     env_file: .env
     ports:
-      - 80:80
+      - 8080:80
     deploy: # Please adjust the resource according to your usecase
       resources:
         limits:
@@ -25,6 +25,8 @@ services:
     container_name: ${PG_HOST}
     image: postgres:13
     restart: always
+    # ports:
+    #   - 5432:5432
     deploy: # Please adjust the resource according to your usecase
       resources:
         limits:
@@ -75,7 +77,7 @@ volumes:
     driver_opts:
       o: bind
       type: none
-      device: ${PWD}/postgres_data
+      device: ./postgres_data
   certs:
   logs:
   fallbackcerts:
